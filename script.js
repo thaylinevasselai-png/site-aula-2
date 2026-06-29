@@ -17,66 +17,67 @@ const btnScanVoz = document.getElementById('btn-scan-voz');
 const visualizerVoz = document.getElementById('audio-visualizer');
 const resultadoVoz = document.getElementById('resultado-voz');
 
+// Limpa classes extras de feedback de cor
+function resetarCoresStatus(elemento) {
+    elemento.classList.remove('cor-erro', 'cor-sucesso');
+}
+
 // Scanner Facial Real + Análise Simulada
 btnScanFace.addEventListener('click', async () => {
+    resetarCoresStatus(resultadoFace);
     resultadoFace.textContent = "🔄 Acessando câmera e analisando malha facial...";
-    resultadoFace.style.color = "var(--texto)";
     
     try {
         const stream = await navigator.mediaDevices.getUserMedia({ video: true });
         videoFeed.srcObject = stream;
         
-        // Simulação do tempo de processamento do algoritmo de IA
         setTimeout(() => {
-            // Gera um resultado inteligente baseado em aleatoriedade educativa
             const confiabilidade = Math.floor(Math.random() * 40) + 60; // 60% a 99%
             const isDeepfake = confiabilidade < 75;
 
             if (isDeepfake) {
                 resultadoFace.innerHTML = `⚠️ Alerta: Confiabilidade de ${confiabilidade}%. Padrões de iluminação inconsistentes e artefatos piscantes detectados nas bordas dos olhos. Possível Deepfake!`;
-                resultadoFace.style.color = "var(--erro)";
+                resultadoFace.classList.add('cor-erro');
             } else {
                 resultadoFace.innerHTML = `✅ Sucesso: Confiabilidade de ${confiabilidade}%. Textura de pele íntegra e fluxo de movimento biométrico validado. Face Humana Real.`;
-                resultadoFace.style.color = "var(--sucesso)";
+                resultadoFace.classList.add('cor-sucesso');
             }
         }, 3000);
 
     } catch (err) {
         resultadoFace.textContent = "❌ Permissão de câmera negada ou dispositivo indisponível. Simulando análise estática: Captura íntegra.";
-        resultadoFace.style.color = "var(--erro)";
+        resultadoFace.classList.add('cor-erro');
     }
 });
 
 // Scanner de Voz Real + Análise Simulada
 btnScanVoz.addEventListener('click', async () => {
+    resetarCoresStatus(resultadoVoz);
     resultadoVoz.textContent = "🎙️ Escutando ruídos de compressão e frequências neurais...";
-    resultadoVoz.style.color = "var(--texto)";
     visualizerVoz.classList.add('animando');
 
     try {
-        // Solicita autorização real do microfone
         const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
         
         setTimeout(() => {
             visualizerVoz.classList.remove('animando');
-            // Interrompe o microfone após o teste para preservar privacidade
             stream.getTracks().forEach(track => track.stop());
 
             const repetibilidadeMetrica = Math.floor(Math.random() * 100);
             
             if (repetibilidadeMetrica > 50) {
                 resultadoVoz.innerHTML = "🔴 Sintetizador de Voz Detectado! Ausência de micro-aspirações humanas normais e espectro de áudio artificialmente linear.";
-                resultadoVoz.style.color = "var(--erro)";
+                resultadoVoz.classList.add('cor-erro');
             } else {
                 resultadoVoz.innerHTML = "🟢 Voz Humana Autêntica! Frequência harmônica natural e variações orgânicas de timbre validadas.";
-                resultadoVoz.style.color = "var(--sucesso)";
+                resultadoVoz.classList.add('cor-sucesso');
             }
         }, 3500);
 
     } catch (err) {
         visualizerVoz.classList.remove('animando');
         resultadoVoz.textContent = "❌ Microfone desativado. Ative as permissões para o teste interativo completo.";
-        resultadoVoz.style.color = "var(--erro)";
+        resultadoVoz.classList.add('cor-erro');
     }
 });
 
@@ -122,9 +123,10 @@ function carregarPergunta() {
     }
 }
 
+// Corrigido para currentTarget para evitar erros de clique nos emojis internos
 botoesOpcao.forEach(botao => {
     botao.addEventListener('click', (e) => {
-        const escolhaUsuario = e.target.getAttribute('data-escolha');
+        const escolhaUsuario = e.currentTarget.getAttribute('data-escolha');
         const questaoAtual = perguntasQuiz[indiceAtual];
 
         if (escolhaUsuario === questaoAtual.resposta) {
@@ -162,5 +164,4 @@ btnReiniciar.addEventListener('click', () => {
     carregarPergunta();
 });
 
-// Inicializa o jogo ao carregar a página
 carregarPergunta();
