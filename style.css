@@ -144,6 +144,10 @@ video {
     font-size: 0.9rem;
 }
 
+/* Classes Utilitárias de Feedback integradas com JS */
+.cor-sucesso { color: var(--sucesso) !important; }
+.cor-erro { color: var(--erro) !important; }
+
 /* Botões do Sistema */
 .btn-primary {
     background-color: var(--primaria);
@@ -215,7 +219,7 @@ footer {
     margin-top: 20px;
 }
 
-/* Responsividade Completa (Media Queries - Requisito Aula 4) */
+/* Responsividade Completa (Media Queries) */
 @media (max-width: 600px) {
     body { padding: 10px; }
     .scanner-box { flex: 1 1 100%; }
