@@ -3,181 +3,86 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cidadania Digital & IA 2026 | Deepfakes</title>
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;600;700&display=swap');
-
-        :root {
-            --primary: #2563eb;
-        }
-
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-
-        body {
-            font-family: 'Inter', system-ui, sans-serif;
-            background: linear-gradient(to bottom, #f8fafc, #e0f2fe);
-            color: #1f2937;
-        }
-
-        .title-font {
-            font-family: 'Space Grotesk', sans-serif;
-        }
-
-        header {
-            background: linear-gradient(135deg, #1e40af, #3b82f6);
-            color: white;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-        }
-
-        .nav {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.2rem 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        .hero {
-            background: linear-gradient(rgba(30, 64, 175, 0.9), rgba(59, 130, 246, 0.85)), 
-                        url('https://picsum.photos/id/1015/1920/1080') center/cover;
-            min-height: 90vh;
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: white;
-        }
-
-        .card {
-            background: white;
-            border-radius: 20px;
-            padding: 2rem;
-            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
-            transition: all 0.4s;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.15);
-        }
-
-        .deepfake-box {
-            position: relative;
-            border: 4px solid #ef4444;
-            border-radius: 16px;
-            overflow: hidden;
-            background: #111;
-        }
-
-        .deepfake-box img {
-            width: 100%;
-            height: auto;
-            display: block;
-        }
-
-        .overlay {
-            position: absolute;
-            top: 15px;
-            right: 15px;
-            background: rgba(220, 38, 38, 0.95);
-            color: white;
-            padding: 6px 16px;
-            border-radius: 50px;
-            font-size: 0.9rem;
-            font-weight: bold;
-        }
-    </style>
+    <title>Portal Cidadania Digital 2026</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-    <!-- NAV -->
+    <!-- Cabeçalho Acessível -->
     <header>
-        <div class="nav">
-            <div style="display:flex; align-items:center; gap:12px;">
-                <span style="font-size:2.2rem;">🛡️</span>
-                <h1 class="title-font">Cidadania Digital 2026</h1>
-            </div>
-            <ul class="nav-links">
-                <li><a href="#sobre">Sobre Deepfakes</a></li>
-                <li><a href="#identificar">Como Identificar</a></li>
-                <li><a href="#perigos">Perigos</a></li>
-                <li><a href="#quiz">Teste-se</a></li>
-                <li><a href="#recursos">Recursos</a></li>
-            </ul>
-        </div>
+        <h1>Cidadania Digital & IA</h1>
+        <p>O Impacto das Deepfakes e da Desinformação na Sociedade</p>
+        <button id="btn-acessibilidade" class="btn-toggle">🌓 Alternar Modo Escuro</button>
     </header>
 
-    <!-- HERO -->
-    <section class="hero">
-        <div style="max-width: 900px; margin: 0 auto; padding: 0 20px;">
-            <h1 class="title-font" style="font-size: 3.8rem; line-height: 1.1;">
-                Deepfakes e Desinformação
-            </h1>
-            <p style="font-size: 1.4rem; margin: 1.5rem 0;">Você sabe identificar o que é real?</p>
-        </div>
-    </section>
-
-    <!-- SEÇÃO DEEPFAKES (CORRIGIDA) -->
-    <section id="sobre" style="padding: 100px 20px;">
-        <div style="max-width: 1200px; margin: 0 auto;">
-            <h2 style="text-align:center; font-size: 2.8rem; margin-bottom: 3rem; color: #1e40af;">
-                O que são Deepfakes?
-            </h2>
+    <main>
+        <!-- SEÇÃO 1: Simulador do Scanner de Veracidade (Desafio Técnico) -->
+        <section class="card-container">
+            <h2>🕵️‍♂️ Scanner de Veracidade de Mídias (Facial & Voz)</h2>
+            <p>Teste as ferramentas de análise simuladas para identificar possíveis manipulações por Inteligência Artificial.</p>
             
-            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;">
-                <div>
-                    <p style="font-size: 1.25rem; line-height: 1.7;">
-                        Deepfakes são vídeos, áudios ou imagens criados ou manipulados por Inteligência Artificial 
-                        (redes neurais profundas) que parecem extremamente reais.
-                    </p>
-                    
-                    <div class="card" style="margin-top: 2rem;">
-                        <h3 style="color: #dc2626; margin-bottom: 1rem;">⚠️ Exemplos reais de uso indevido:</h3>
-                        <ul style="line-height: 2.2; font-size: 1.1rem;">
-                            <li>Políticos dizendo coisas que nunca falaram</li>
-                            <li>Famosos em vídeos falsos comprometedores</li>
-                            <li>Fake news espalhadas em massa durante eleições</li>
-                        </ul>
+            <div class="scanner-layout">
+                <!-- Scanner Facial -->
+                <div class="scanner-box">
+                    <h3>Análise Facial Biométrica</h3>
+                    <video id="video-feed" autoplay playsinline muted></video>
+                    <button id="btn-scan-face" class="btn-primary">Iniciar Scanner Facial</button>
+                    <div id="resultado-face" class="status-box">Aguardando ativação da câmera...</div>
+                </div>
+
+                <!-- Scanner de Voz -->
+                <div class="scanner-box">
+                    <h3>Análise de Frequência de Voz</h3>
+                    <div class="audio-wave" id="audio-visualizer">
+                        <span></span><span></span><span></span><span></span><span></span>
+                    </div>
+                    <button id="btn-scan-voz" class="btn-primary">Gravar e Analisar Voz</button>
+                    <div id="resultado-voz" class="status-box">Aguardando captação de áudio...</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: O Jogo / Quiz Anti-Desinformação -->
+        <section class="card-container">
+            <h2>🎮 Jogo Educativo: Detetive da Cidadania Digital</h2>
+            <p>Analise os casos abaixo e descubra se a notícia/mídia é Real ou uma Deepfake manipulada!</p>
+            
+            <div id="quiz-container">
+                <div class="progresso">Pergunta <span id="pergunta-atual">1</span> de 3</div>
+                
+                <div id="bloco-pergunta">
+                    <p id="texto-pergunta" class="pergunta-enunciado">Carregando pergunta...</p>
+                    <div class="opcoes-container">
+                        <button class="btn-opcao" data-escolha="REAL">🟢 É REAL (Fato Verídico)</button>
+                        <button class="btn-opcao" data-escolha="DEEPFAKE">🔴 É DEEPFAKE (Manipulado por IA)</button>
                     </div>
                 </div>
 
-                <!-- IMAGEM CORRIGIDA -->
-                <div class="deepfake-box">
-                    <img src="https://picsum.photos/id/1015/800/500" 
-                         alt="Exemplo de Deepfake" 
-                         onerror="this.src='https://via.placeholder.com/800x500/111827/ffffff?text=Exemplo+Deepfake+Simulado';">
-                    <div class="overlay">SIMULADO — IA</div>
+                <div id="resultado-quiz" class="escondido">
+                    <h3>🏆 Fim do Jogo!</h3>
+                    <p id="placar-final">Você acertou 0 de 0 perguntas.</p>
+                    <p id="feedback-final"></p>
+                    <button id="btn-reiniciar" class="btn-primary">Jogar Novamente</button>
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Restante do site (mantido simplificado) -->
-    <section id="identificar" style="background:white; padding: 100px 20px;">
-        <div style="max-width: 1200px; margin: 0 auto; text-align:center;">
-            <h2 style="font-size: 2.8rem; margin-bottom: 3rem;">Como Identificar uma Deepfake?</h2>
-            <!-- ... resto do conteúdo ... -->
-        </div>
-    </section>
+        <!-- SEÇÃO 3: Links Úteis e Regulamentos de Checagem -->
+        <section class="card-container">
+            <h2>🔗 Fontes Confiáveis e Agências de Checagem</h2>
+            <p>Consulte sempre canais oficiais para validar informações antes de compartilhar nas redes sociais:</p>
+            <ul class="links-lista">
+                <li><a href="https://aosfatos.org" target="_blank" rel="noopener">Aos Fatos - Agência de Fact-Checking</a></li>
+                <li><a href="https://uol.com.br" target="_blank" rel="noopener">Agência Lupa - Combate à Desinformação</a></li>
+                <li><a href="https://comprova.org" target="_blank" rel="noopener">Projeto Comprova - Verificação de Conteúdo</a></li>
+            </ul>
+        </section>
+    </main>
 
-    <footer style="background:#1e2937; color:#cbd5e1; text-align:center; padding: 3rem 20px;">
-        <p style="font-size: 1.3rem;">Cidadania Digital & IA — Projeto Escolar 2026</p>
-        <p>#cidadaniadigital2026</p>
+    <footer>
+        <p>&copy; 2026 - Desenvolvido para o Projeto de Cidadania Digital. Todos os direitos reservados de forma ética.</p>
     </footer>
 
+    <script src="js/script.js"></script>
 </body>
 </html>
